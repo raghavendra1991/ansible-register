@@ -1,0 +1,16 @@
+---
+- name: variable session file
+  hosts: nodes
+  become: yes
+  vars_files:
+  - vars.yml
+
+  tasks:
+  - name: install package
+    apt:
+      name: "{{web_package}}"
+      state: present
+    register: apt_output
+  - debug: 
+      msg: "{{apt_output}}"
+    

@@ -1,0 +1,16 @@
+---
+- name: configuration setup
+  hosts: nodes
+  become: yes
+  tasks:
+
+  - name: install 
+    apt:
+      name: net-tools
+      state: present
+  - name: netstat
+    shell: netstat
+  - name: netstat output to result.txt
+    shell: netstat -a > result.txt    
+  - debug:
+      msg: "netstat start"
